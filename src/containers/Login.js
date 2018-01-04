@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 
 import { logIn } from '../actions/';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Paper, TextField, RaisedButton } from 'material-ui';
-
+import { View } from 'react-native'
 
 class Login extends Component {
     constructor(props) {
