@@ -3,7 +3,16 @@ import { connect } from 'react-redux';
 
 import { logIn } from '../actions/';
 
-import { View } from 'react-native'
+import { Text, Button } from 'react-native';
+import { Container, 
+         Header, 
+         Content, 
+         Form, 
+         Item, 
+         Input, 
+         Label,
+         Body } from 'native-base';
+
 
 class Login extends Component {
     constructor(props) {
@@ -23,41 +32,38 @@ class Login extends Component {
                 this.formData.email,
                 this.formData.password
             ); 
-            this.props.history.push(`/`)
         }
     }
 
     render() {
         return (
-            <MuiThemeProvider>
-                <Paper style={{width: 600, marginLeft: 'auto', marginRight: 'auto', marginTop: '100px', padding: '20px'}}>
-                    <form onSubmit={this.handleSubmit}>
-                        <TextField
-                            hintText="peter@klaven"
-                            floatingLabelText="Email"
-                            type="email"
-                            style={{width: '100%'}}
-                            required
-                            onChange={(event, value) => { this.formData.email = value }}
+            <Container style={{paddingTop: 24}}>
+                <Header backgroundColor='#841584'>
+                    <Body>
+                        <Text style={{ marginLeft: 'auto', marginRight: 'auto', color: '#fff' }}>
+                            SIGN UP
+                        </Text>
+                    </Body>
+                </Header>
+                <Content style={{ padding: 10 }}>
+                    <Item floatingLabel>
+                        <Label>Email</Label>
+                        <Input onChange={(event, value) => { this.formData.email = value }} 
+                               keyboardType='email-address'
                         />
-                        <TextField
-                            hintText="cityslicka"
-                            floatingLabelText="Password"
-                            type="password"
-                            style={{ width: '100%', marginBottom: '20px' }}
-                            required
-                            onChange={(event, value) => { this.formData.password = value }}
-                        />
-                        <RaisedButton 
-                            label="Submit"
-                            primary
-                            fullWidth={true}
-                            type="submit"
-                        />
-                    </form>
-                </Paper>
-            </MuiThemeProvider>
-        );
+                    </Item>
+                    <Item floatingLabel style={{marginBottom: 20}}>
+                        <Label>Password</Label>
+                        <Input onChange={(event, value) => { this.formData.password = value }} />
+                    </Item>
+                    <Button
+                        onPress={this.handleSubmit}
+                        title="Submit"
+                        color="#841584"
+                    />
+                </Content>
+            </Container>
+            );
     }
 }
 
