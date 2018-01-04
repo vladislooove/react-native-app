@@ -31,7 +31,9 @@ class Login extends Component {
             this.props.logIn(
                 this.formData.email,
                 this.formData.password
-            ); 
+            );
+
+            this.props.navigation.navigate('/');
         }
     }
 
@@ -46,7 +48,7 @@ class Login extends Component {
                     </Body>
                 </Header>
                 <Content style={{ padding: 10 }}>
-                    <Item floatingLabel>
+                    <Item floatingLabel style={{marginBottom: 20}}>
                         <Label>Email</Label>
                         <Input onChange={(event, value) => { this.formData.email = value }} 
                                keyboardType='email-address'
